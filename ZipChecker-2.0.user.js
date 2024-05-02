@@ -142,20 +142,15 @@
             const input = cityInput.value.trim(); // Trim excess whitespace
             const parts = input.split(',').map(part => part.trim());
             if (parts.length === 2) {
-                // Capitalize the first letter of each word in the city name
-                cityName = parts[0].split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-                // Capitalize the state abbreviation
+                cityName = parts[0].split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
                 stateName = parts[1].toUpperCase();
             } else if (parts.length === 1) {
                 const words = parts[0].split(' ');
                 if (words.length > 1) {
-                    // Capitalize the first letter of each word in the city name
-                    cityName = words.slice(0, -1).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-                    // Capitalize the state abbreviation
+                    cityName = words.slice(0, -1).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
                     stateName = words[words.length - 1].toUpperCase();
                 } else {
-                    // Capitalize the first letter of the city name
-                    cityName = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+                    cityName = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
                 }
             }
 
